@@ -3,7 +3,7 @@ import "./App.scss";
 import { GrEdit } from "react-icons/gr";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-const backendUrl = "http://localhost:3022";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -91,7 +91,7 @@ function App() {
   const handleFormSaveButton = (e) => {
     e.preventDefault();
     (async () => {
-      await fetch(`${backendUrl}/insertuser`, {
+      await fetch(`${backendUrl}/adduser`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
